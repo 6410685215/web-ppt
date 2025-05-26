@@ -1,6 +1,7 @@
 // import components
 import { Header } from "@/components/header";
 import Contact01Page from "./components/contact-01";
+import { Footer } from "@/components/footer";
 
 export default function ContactPage() {
   return (
@@ -9,6 +10,7 @@ export default function ContactPage() {
       <main className="bg-muted">
         <Contact01Page />
       </main>
+      <Footer />
     </>
   );
 }

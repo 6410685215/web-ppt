@@ -7,6 +7,7 @@ import Link from "next/link";
 // import components
 import { Header } from "@/components/header";
 import ImageCard from "./components/ImageCard";
+import { Footer } from "@/components/footer";
 
 const Certificates = [
   {
@@ -95,6 +96,7 @@ export default function CertificatePage() {
       <main className="bg-muted">
         <Blog02Page />
       </main>
+      <Footer />
     </>
   );
 }

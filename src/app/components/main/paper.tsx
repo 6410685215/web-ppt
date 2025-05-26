@@ -15,8 +15,8 @@ const PaperA4 = () => {
             &nbsp;+666 5048 3001</a> |
           <a href="mailto:patcharapon.tap@dome.tu.ac.th" target="_blank">
             &nbsp;patcharapon.tap@dome.tu.ac.th</a> |
-          <a href="https://6410685215.github.io/contact">
-            &nbsp;https://6410685215.github.io</a>
+          <a href="https://web-ppt-peach.vercel.app/Contact">
+            &nbsp;https://web-ppt-peach.vercel.app</a>
 
         </p>
       </section>

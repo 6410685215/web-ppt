@@ -2,6 +2,7 @@
 import { Header } from "@/components/header";
 import Hero02 from "./components/hero-02";
 import Logos02Page from "./components/logos-02";
+import { Footer } from "@/components/footer";
 
 export default function AboutPage() {
   return (
@@ -11,6 +12,7 @@ export default function AboutPage() {
         <Hero02 />
         <Logos02Page />
       </main>
+      <Footer />
     </>
   );
 }
