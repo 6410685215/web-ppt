@@ -1,12 +1,14 @@
 {
   "name": "web-ppt",
   "version": "0.1.0",
+  "homepage": "https://6410685215.github.io/",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack -H",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "npm run build && npx gh-pages -d out"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.11",
@@ -36,6 +38,7 @@
     "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.1.8",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
