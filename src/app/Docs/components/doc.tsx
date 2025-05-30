@@ -31,7 +31,7 @@ const document = [
   {
     title: "Cooperative Education Manual PDF",
     desc: "You can download the Cooperative Education Manual in PDF format using the Button below.",
-    link: "/docs/cn-coopaerative-education-manual-66-1.pdf",
+    link: "/docs/cn-cooperative-education-manual-66-1.pdf",
   },
   {
     title: "Cooperative Presentation Guide PDF",
