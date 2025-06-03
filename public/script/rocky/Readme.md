@@ -1,0 +1,137 @@
+## Add file system-info to `/usr/local/bin`
+```/usr/local/bin/system-info
+#!/bin/bash
+
+# color config
+GREEN='\e[38;2;16;185;129m'
+RESET='\e[0m'
+
+# ========= LOGO ASCII (L) =========
+logo_lines=(
+"                            "
+"                            "
+"        xxrrrxxrrrxx        "
+"     nrrrrrrrrrrrrrrrrn     "
+"   xrrrrrrrrrrrrrrrrrrrrx   "
+"  xrrrrrrrrrrrrrrrrrrrrrrx  "
+" nrrrrrrrrrrrrrrrrrrrrrrrrn "
+" xrrrrrrrrrrrrrrxx rxrrrrrr "
+" rrrrrrrrrrrrxxn    xrxrrrx "
+" xrrrrrrrrrrxx        xxrrr "
+" rrrrrrrrrxx     xx     xrr "
+" xxrrrrrxx     rxrrxx       "
+"  xrrrxx     xrrrrrrrxx     "
+"   xxx     xrxrrrrrrrrrr    "
+"          rrrrrrrrrrrrn     "
+"        xxrrxxxrrxrx        "
+)
+
+# ========= SYSTEM INFO (R) =========
+
+# Username@Host
+user_host="$(whoami)@$(hostname)"
+sep_line="--------------------------"
+
+# OS
+os_name=$(lsb_release -ds 2>/dev/null || grep '^PRETTY_NAME' /etc/os-release | cut -d= -f2 | tr -d '"')
+
+# Host (dmidecode)
+host_model=$(cat /sys/class/dmi/id/product_name 2>/dev/null || echo "Unavailable")
+
+# Kernel
+kernel=$(uname -r)
+
+# Uptime
+uptime=$(uptime -p)
+
+# Packages (dpkg or rpm)
+if command -v dpkg &>/dev/null; then
+    pkg_count=$(dpkg -l | grep '^ii' | wc -l)
+elif command -v rpm &>/dev/null; then
+    pkg_count=$(rpm -qa | wc -l)
+else
+    pkg_count="?"
+fi
+
+# Shell
+shell="$SHELL"
+
+# Resolution (xrandr DISPLAY)
+if [ -n "$DISPLAY" ] && command -v xrandr &>/dev/null; then
+    resolution=$(xrandr | grep '*' | awk '{print $1}' | head -n1)
+else
+    resolution="Console"
+fi
+
+# DE (desktop environment)
+de="${XDG_CURRENT_DESKTOP:-None}"
+
+# Terminal
+terminal="${TERM:-unknown}"
+
+# CPU
+cpu=$(lscpu | grep 'Model name' | awk -F: '{print $2}' | sed 's/^[ \t]*//')
+
+# GPU
+gpu=$(lspci | grep -i 'vga\|3d' | awk -F: '{print $3}' | head -n1 | sed 's/^[ \t]*//')
+
+# Memory
+mem=$(free -h | awk '/^Mem:/ {print $3 " / " $2}')
+
+# Disk
+disk=$(df -h / | awk 'NR==2 {print $3 " / " $2}')
+
+# info array
+info_lines=(
+"          "
+"          "
+"$user_host"
+"$sep_line"
+"\e[1mOS:\e[0m          $os_name"
+"\e[1mHost:\e[0m        $host_model"
+"\e[1mKernel:\e[0m      $kernel"
+"\e[1mUptime:\e[0m      $uptime"
+"\e[1mPackages:\e[0m    $pkg_count (dpkg or rpm)"
+"\e[1mShell:\e[0m       $shell"
+"\e[1mResolution:\e[0m  $resolution"
+"\e[1mDE:\e[0m          $de"
+"\e[1mTerminal:\e[0m    $terminal"
+"\e[1mCPU:\e[0m         $cpu"
+"\e[1mGPU:\e[0m         $gpu"
+"\e[1mMemory:\e[0m      $mem"
+"\e[1mDisk:\e[0m        $disk"
+"          "
+"          "
+)
+
+# ========= display 2 cols =========
+max_lines=${#logo_lines[@]}
+[ ${#info_lines[@]} -gt $max_lines ] && max_lines=${#info_lines[@]}
+
+for ((i=0; i<$max_lines; i++)); do
+    logo="${logo_lines[i]}"
+    info="${info_lines[i]}"
+    printf "${GREEN}%-30s${RESET} " "$logo"
+    printf "%b\n" "$info"
+done
+```
+
+## Add motd to `/etc/profile.d`
+```/etc/profile.d/motd
+#!/bin/bash
+
+if [ -x /usr/local/bin/system-info ]; then
+    /usr/local/bin/system-info
+fi
+```
+
+## Add executable permissions
+```bash
+sudo chmod -x /usr/local/bin/system-info
+sudo chmod -x /etc/profile.d/motd
+```
+
+# How to install
+```bash
+sudo bash <(curl -s https://web-ppt-peach.vercel.app/script/rocky/install-system-info)
+```

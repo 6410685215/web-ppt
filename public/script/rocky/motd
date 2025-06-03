@@ -1,0 +1,5 @@
+#!/bin/bash
+
+if [ -x /usr/local/bin/system-info ]; then
+    /usr/local/bin/system-info
+fi
