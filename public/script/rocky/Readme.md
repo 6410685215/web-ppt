@@ -133,5 +133,5 @@ sudo chmod -x /etc/profile.d/motd
 
 # How to install
 ```bash
-sudo bash <(curl -s https://web-ppt-peach.vercel.app/script/rocky/install-system-info)
+curl -s https://web-ppt-peach.vercel.app/script/rocky/install-system-info | sudo bash
 ```
