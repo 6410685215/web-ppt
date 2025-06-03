@@ -6,11 +6,11 @@ set -e
 echo "[+] Downloading system-info script..."
 curl -sSL https://web-ppt-peach.vercel.app/script/rocky/system-info -o /usr/local/bin/system-info
 
-echo "[+] Downloading motd script..."
-curl -sSL https://web-ppt-peach.vercel.app/script/rocky/motd -o /etc/profile.d/motd
+echo "[+] Downloading motd.sh script..."
+curl -sSL https://web-ppt-peach.vercel.app/script/rocky/motd -o /etc/profile.d/motd.sh
 
 echo "[+] Setting executable permissions..."
 chmod +x /usr/local/bin/system-info
-chmod +x /etc/profile.d/motd
+chmod +x /etc/profile.d/motd.sh
 
 echo "[✓] Installation completed. 'system-info' will now run at login."

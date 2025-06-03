@@ -116,8 +116,8 @@ for ((i=0; i<$max_lines; i++)); do
 done
 ```
 
-## Add motd to `/etc/profile.d`
-```/etc/profile.d/motd
+## Add motd.sh to `/etc/profile.d`
+```/etc/profile.d/motd.sh
 #!/bin/bash
 
 if [ -x /usr/local/bin/system-info ]; then
@@ -128,7 +128,7 @@ fi
 ## Add executable permissions
 ```bash
 sudo chmod -x /usr/local/bin/system-info
-sudo chmod -x /etc/profile.d/motd
+sudo chmod -x /etc/profile.d/motd.sh
 ```
 
 # How to install
