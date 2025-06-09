@@ -50,6 +50,14 @@ const Certificates = [
     type: "Cisco Certified Network Associate",
     date: "Feb. 2024"
   },
+  {
+    title: "Letter Internship - NECTEC NSTDA Traffy Team",
+    description: "A letter of recommendation for my internship at NECTEC NSTDA Traffy Team.",
+    image: "/certificates/Letter-NSTDA-NECTEC.png",
+    link: "/docs/Letter-NSTDA-NECTEC.pdf",
+    type: "Internship",
+    date: "May. 2025"
+  },
 ]
 
 const Blog02Page = () => {
@@ -57,9 +65,9 @@ const Blog02Page = () => {
     <div className="max-w-screen-xl mx-auto py-16 px-6 xl:px-0 mt-20">
       <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {Certificates.map((item) => (
-          <Card key={item.title} className="shadow-sx overflow-hidden rounded-sm">
-              <ImageCard image={item.image} title={item.title} />
-            <CardContent className="py-6">
+          <Card key={item.title} className="shadow-sx overflow-hidden rounded-sm flex flex-col">
+              <ImageCard image={item.image} title={item.title} className="flex-1" />
+            <CardContent className="py-6 flex-1 flex flex-col justify-between">
               <div className="flex items-center gap-3">
                 <Badge className="bg-primary/5 text-primary hover:bg-primary/5 shadow-none">
                   {item.type}

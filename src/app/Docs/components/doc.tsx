@@ -73,6 +73,11 @@ const document = [
     desc: "You can download the Letter of Switching, Routing, and Wireless Essentials from CCNA in PDF format using the Button below.",
     link: "/docs/PatcharaponTappakwan-Switching Routin-letter.pdf",
   },
+  {
+    title: "Letter of Internship at NECTEC NSTDA Traffy Team PDF",
+    desc: "You can download the Letter of Internship at NECTEC NSTDA Traffy Team in PDF format using the Button below.",
+    link: "/docs/Letter-NSTDA-NECTEC.pdf",
+  },
 ];
 
 const Document01 = () => {

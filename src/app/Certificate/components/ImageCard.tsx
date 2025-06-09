@@ -15,19 +15,20 @@ import Image from "next/image";
 interface ImageCardProps {
   image: string;
   title: string;
+  className?: string;
 }
 
 const ImageCard = (props: ImageCardProps) => {
   return (
     <Dialog>
-      <CardHeader className="p-0">
+      <CardHeader className={`p-0 ${props.className}`}>
         <DialogTrigger asChild>
           <Image
             src={props.image}
             alt={props.title}
             width={500}
             height={300}
-            className="w-full h-auto object-cover border-b cursor-pointer"
+            className="w-full max-h-80 object-cover object-top border-b cursor-pointer"
           />
         </DialogTrigger>
         <DialogContent className="bg-white dark:bg-white text-neutral-950 dark:text-neutral-950">
